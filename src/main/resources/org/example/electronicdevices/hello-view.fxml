@@ -5,56 +5,51 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
 
-<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.electronicdevices.HelloController" spacing="10" alignment="TOP_CENTER">
+<VBox spacing="10" alignment="CENTER" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.electronicdevices.HelloController">
 
-  <!-- TabPane for selecting device types -->
-  <TabPane fx:id="tabPane" prefHeight="200" prefWidth="400">
-    <!-- Smartphone Tab -->
+  <!-- Common Fields -->
+  <TextField fx:id="nameField" promptText="Name"/>
+  <TextField fx:id="priceField" promptText="Price"/>
+  <TextField fx:id="weightField" promptText="Weight"/>
+
+  <!-- TabPane for device-specific fields -->
+  <TabPane fx:id="tabPane">
+    <!-- Tab for Smartphone -->
     <Tab text="Smartphone">
-      <VBox spacing="10" alignment="TOP_CENTER" padding="10">
-        <TextField fx:id="nameField" promptText="Name" />
-        <TextField fx:id="priceField" promptText="Price" />
-        <TextField fx:id="weightField" promptText="Weight" />
-        <!-- Additional fields for Smartphone -->
-        <TextField promptText="Screen Size" />
-        <TextField promptText="Camera Resolution" />
-        <Button text="Add Smartphone" onAction="#addSmartphone" />
+      <VBox spacing="10" padding="10">
+        <TextField fx:id="screenSizeField" promptText="Screen Size"/>
+        <TextField fx:id="cameraResolutionField" promptText="Camera Resolution"/>
       </VBox>
     </Tab>
 
-    <!-- Laptop Tab -->
+    <!-- Tab for Laptop -->
     <Tab text="Laptop">
-      <VBox spacing="10" alignment="TOP_CENTER" padding="10">
-        <TextField fx:id="nameField" promptText="Name" />
-        <TextField fx:id="priceField" promptText="Price" />
-        <TextField fx:id="weightField" promptText="Weight" />
-        <!-- Additional fields for Laptop -->
-        <TextField promptText="RAM Size" />
-        <TextField promptText="Processor Type" />
-        <Button text="Add Laptop" onAction="#addLaptop" />
+      <VBox spacing="10" padding="10">
+        <TextField fx:id="ramSizeField" promptText="RAM Size"/>
+        <TextField fx:id="processorTypeField" promptText="Processor Type"/>
       </VBox>
     </Tab>
 
-    <!-- Tablet Tab -->
+    <!-- Tab for Tablet -->
     <Tab text="Tablet">
-      <VBox spacing="10" alignment="TOP_CENTER" padding="10">
-        <TextField fx:id="nameField" promptText="Name" />
-        <TextField fx:id="priceField" promptText="Price" />
-        <TextField fx:id="weightField" promptText="Weight" />
-        <!-- Additional fields for Tablet -->
-        <TextField promptText="Battery Life" />
-        <TextField promptText="Has Stylus" />
-        <Button text="Add Tablet" onAction="#addTablet" />
+      <VBox spacing="10" padding="10">
+        <TextField fx:id="batteryLifeField" promptText="Battery Life"/>
+        <CheckBox fx:id="stylusCheckBox" text="Has Stylus"/>
       </VBox>
     </Tab>
   </TabPane>
 
-  <!-- ListView to display added devices -->
-  <ListView fx:id="listView" prefHeight="150" prefWidth="350" />
+  <!-- Add and Remove Buttons -->
+  <HBox spacing="10" alignment="CENTER">
+    <Button text="Add" onAction="#onAddButtonClick"/>
+    <Button text="Remove" onAction="#onRemoveButtonClick"/>
+  </HBox>
 
-  <!-- Remove Button -->
-  <Button text="Remove Selected Device" onAction="#removeSelectedDevice" />
+  <!-- ListView to display devices -->
+  <ListView fx:id="listView" prefHeight="200"/>
 
 </VBox>
